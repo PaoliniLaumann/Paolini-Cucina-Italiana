@@ -10,7 +10,13 @@
   <!-- CSS only -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=BIZ+UDMincho&family=Updock&display=swap" rel="stylesheet">
+  <!-- font-family: 'Anton', sans-serif;
+       font-family: 'BIZ UDMincho', serif;
+       font-family: 'Updock', cursive; -->
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -58,11 +64,11 @@
   </div>
   <main class="container-fluid d-flex justify-content-center">
     <div class="row ">
-      <div class="col-md-4 text-white d-flex flex-column align-items-center justify-content-around mt-4 text-center">
-        <h1 class="fs-1">Paolini Cucina Italiana <br>Lo mejor de la cocina Italiana</h1>
+      <div class="col-md-5 text-white d-flex flex-column align-items-center justify-content-around mt-4 text-center">
+        <h1 class="encabezado encabezado_color">Paolini Cucina Italiana <br>Lo mejor de la cocina Italiana</h1>
 
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <img class="img-fluid d-none d-sm-none d-md-block" src="src/images/pizzasinfondo.png" alt="pizza">
       </div>
     </div>
@@ -70,21 +76,26 @@
   </main>
   <section>
     <div class="row d-flex align-items-center">
-      <div class="col-md-6 text-center text-white fs-2 text-center px-5">
-        <h2>SABOR DELICIOSO</h2>
-        <p>Inspirados en la cocina Italiana tradicional
+      <div class="col-md-6 text-right text-white fs-2 text-center px-5 encabezado">
+        <h2 class="encabezado_color ">SABOR DELICIOSO</h2>
+        <p class="text-muted">Inspirados en la cocina Italiana tradicional
           nuestras recetas cuantas con productos de primera calidad, logrando
-          los mas ricos sabores, veni a visitarnos y proba nuestros platos</p>
+          los mas ricos sabores, veni a visitarnos y proba nuestros platos.</p>
       </div>
       <div class="col-md-6">
         <img class="img-fluid" src="src/images/pastasinfondo.png" alt="pasta">
       </div>
 
-    </div>
+    </div>    
   </section>
+  <div>
+    <a href="https://api.whatsapp.com/send?phone=+542923422635" class="btn-wsp" target="_blank">
+	    <i class="fa fa-whatsapp icono"></i>
+	</a>
+  </div>
   <section>
     <div class="row text-center text-white py-5">
-      <h1>Mira algunos de nuestros platos</h1>
+      <h1 class="encabezado text-muted">Mira algunos de nuestros platos</h1>
     </div>
     <div class="row">
       <div class="col-md-2"></div>
@@ -119,7 +130,7 @@
 
   </section>
 
-  <div class="container-fluid d-flex justify-content-around py-5 border-top my-5">
+  <div class="container-fluid d-flex justify-content-around py-5 border-top my-1">
     <footer class="row row-cols-5 py-5 ">
       <div class="col d-flex flex-column align-items-center footercontent">
         <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
@@ -174,7 +185,12 @@
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted footerestilo1">Twitter</a></li>
         </ul>
       </div>
+      
     </footer>
+  </div>
+
+  <div class="container-fluid text-center">
+    <img src="/src/images/footer_platos.png" class="img-fluid" alt="Responsive image">
   </div>
 
 
