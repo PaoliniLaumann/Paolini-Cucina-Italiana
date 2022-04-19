@@ -44,6 +44,21 @@ body {
     background: #20ba5a;
 }
 
+.transform1:hover {    
+    font-size: 2rem;
+    transition: all 1s;
+}
+
+.transform2:hover {    
+    font-size: 1.6rem;
+    transition: all 1s;
+}
+
+.transform4:hover {
+    transform: rotateY(360deg);
+    transition: all 3s;
+}
+
 @media (max-width:650px) {
 
 
