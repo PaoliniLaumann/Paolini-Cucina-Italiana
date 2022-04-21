@@ -1,6 +1,10 @@
 .encabezado_color {
   color: bisque; }
 
+* {
+  margin: 0;
+  padding: 0; }
+
 .navbar-nav > li {
   padding-left: 10px;
   padding-right: 10px; }
@@ -10,10 +14,6 @@
   font-family: 'BIZ UDMincho', serif;
   font-weight: bold;
   font-size: 3rem; }
-
-* {
-  margin: 0;
-  padding: 0; }
 
 body {
   background-image: url(../src/images/fondo-pizza.jpg); }
