@@ -1,7 +1,25 @@
-.encabezado {
-    font-family: 'Anton', sans-serif;
-    font-family: 'BIZ UDMincho', serif;
-    font-weight: bold;
-    font-size: 3rem;
+$estilos_tip: (
+    font1: "'Anton', sans-serif ",
+    font2: "'BIZ UDMincho', serif ",
+    negrita: bold,
+    size: 3rem
+);
 
+$estilos: (
+    color: #ffe4c4
+);
+
+/* MAP-GET */
+
+.encabezado {
+    font-family: map-get($estilos_tip, font1);
+    font-family: map-get($estilos_tip, font2);
+    font-weight: map-get($estilos_tip, negrita);
+    font-size:  map-get($estilos_tip, size);
+    color: map-get($estilos, color);
+}
+
+.encabezado_color {
+    color: map-get($estilos, color);
+    font-weight: map-get($estilos_tip, negrita);
 }

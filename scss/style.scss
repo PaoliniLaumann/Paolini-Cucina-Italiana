@@ -4,9 +4,10 @@
 
 
 body {
-    background-image: url(../src/images/fondo-pizza.jpg);
+    background-image: url(../src/images/fondo-pizza.jpg);   
 
 }
+
 
 .footerestilo1 {
     font-size: 1.5rem;
@@ -14,10 +15,12 @@ body {
     color: antiquewhite;
 }
 
+/* EXTEND */
+
 .footerestilo {
+    @extend .footerestilo1;
     font-size: 1.75rem;
-    text-align: center;
-    color: antiquewhite;
+    
 }
 
 .btn-wsp{

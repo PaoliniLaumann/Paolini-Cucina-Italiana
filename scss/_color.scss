@@ -1,3 +1,8 @@
+/* $estilos: (
+    color: #ffe4c4
+);
+
+
 .encabezado_color {
-    color:bisque;
-}
+    color: map-get($estilos, color );
+} */
