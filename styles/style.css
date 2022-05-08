@@ -32,6 +32,18 @@ body {
 .footerestilo {
   font-size: 1.75rem; }
 
+.imagen:hover {
+  filter: saturate(180%);
+  transition: all 1s; }
+
+.contenedor:hover .imagen {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  transition: all 2s; }
+
+.contenedor {
+  overflow: hidden; }
+
 .btn-primary {
   background-color: #0f8d3f; }
 
@@ -53,14 +65,6 @@ body {
 
 .btn-wsp:hover {
   background: #20ba5a; }
-
-.transform1:hover {
-  font-size: 2rem;
-  transition: all 1s; }
-
-.transform2:hover {
-  font-size: 1.6rem;
-  transition: all 1s; }
 
 .transform4:hover {
   transform: rotateY(360deg);
