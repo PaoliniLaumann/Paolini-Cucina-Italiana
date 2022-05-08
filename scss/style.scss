@@ -3,7 +3,7 @@
 
 
 body {
-    background-image: url(../src/images/fondo-pizza.jpg);   
+    background-image: url(../src/images/fondo-pizza.jpg);
 
 }
 
@@ -19,35 +19,40 @@ body {
 .footerestilo {
     @extend .footerestilo1;
     font-size: 1.75rem;
-    
+
 }
 
-.btn-wsp{
-    position:fixed;
-    width:60px;
-    height:60px;
+.btn-primary {
+background-color: #0f8d3f;
+}
+
+.btn-wsp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
     line-height: 60px;
-    bottom:30px;
-    right:30px;
-    background:#25d366;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    font-size:35px;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
     box-shadow: 0px 3px 20px rgba(175, 18, 18, 0.941);
-    z-index:100;
+    z-index: 100;
     transition: all 300ms ease;
 }
-.btn-wsp:hover{
+
+.btn-wsp:hover {
     background: #20ba5a;
 }
 
-.transform1:hover {    
+.transform1:hover {
     font-size: 2rem;
     transition: all 1s;
 }
 
-.transform2:hover {    
+.transform2:hover {
     font-size: 1.6rem;
     transition: all 1s;
 }
@@ -56,6 +61,32 @@ body {
     transform: rotateY(360deg);
     transition: all 3s;
 }
+
+.map-responsive {
+
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 1%;
+}
+
+
+@media (max-width:1233px) {
+    .contacto {
+        font-size: 1.7rem;
+    }
+}
+
 
 @media (max-width:650px) {
 
@@ -69,7 +100,7 @@ body {
     .footerestilo1 {
         font-size: 0.70rem;
         text-align: center;
-       }
+    }
 
     .footerlogo {
         width: 100px;
@@ -81,18 +112,18 @@ body {
         ;
     }
 
-    .encabezado {        
+    .encabezado {
         font-size: 1.5rem;
-    
+
     }
 
-    .btn-wsp{
-        
+    .btn-wsp {
+
         width: 45px;
-        height:45px;
-        line-height: 45px;       
-        border-radius:40px;       
-        font-size:35px;        
+        height: 45px;
+        line-height: 45px;
+        border-radius: 40px;
+        font-size: 35px;
     }
 
     .footer_platos {

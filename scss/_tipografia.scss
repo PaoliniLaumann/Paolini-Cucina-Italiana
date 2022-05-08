@@ -1,6 +1,4 @@
 $estilos_tip: (
-    font1: "'Anton', sans-serif ",
-    font2: "'BIZ UDMincho', serif ",
     negrita: bold,
     size: 3rem
 );
@@ -12,8 +10,6 @@ $estilos: (
 /* MAP-GET */
 
 .encabezado {
-    font-family: map-get($estilos_tip, font1);
-    font-family: map-get($estilos_tip, font2);
     font-weight: map-get($estilos_tip, negrita);
     font-size:  map-get($estilos_tip, size);
     color: map-get($estilos, color);
@@ -22,4 +18,9 @@ $estilos: (
 .encabezado_color {
     color: map-get($estilos, color);
     font-weight: map-get($estilos_tip, negrita);
+}
+
+.encabezado {
+    font-family: 'Anton', sans-serif;
+    font-family: 'BIZ UDMincho', serif;
 }

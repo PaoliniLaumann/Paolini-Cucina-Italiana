@@ -8,8 +8,6 @@
 
 /* MAP-GET */
 .encabezado {
-  font-family: "'Anton', sans-serif ";
-  font-family: "'BIZ UDMincho', serif ";
   font-weight: bold;
   font-size: 3rem;
   color: #ffe4c4; }
@@ -17,6 +15,10 @@
 .encabezado_color {
   color: #ffe4c4;
   font-weight: bold; }
+
+.encabezado {
+  font-family: 'Anton', sans-serif;
+  font-family: 'BIZ UDMincho', serif; }
 
 body {
   background-image: url(../src/images/fondo-pizza.jpg); }
@@ -29,6 +31,9 @@ body {
 /* EXTEND */
 .footerestilo {
   font-size: 1.75rem; }
+
+.btn-primary {
+  background-color: #0f8d3f; }
 
 .btn-wsp {
   position: fixed;
@@ -60,6 +65,24 @@ body {
 .transform4:hover {
   transform: rotateY(360deg);
   transition: all 3s; }
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0; }
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 1%; }
+
+@media (max-width: 1233px) {
+  .contacto {
+    font-size: 1.7rem; } }
 
 @media (max-width: 650px) {
   .footerestilo {
