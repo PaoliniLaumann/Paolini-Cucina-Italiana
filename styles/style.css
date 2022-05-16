@@ -20,18 +20,6 @@
   font-family: 'Anton', sans-serif;
   font-family: 'BIZ UDMincho', serif; }
 
-body {
-  background-image: url(../src/images/fondo-pizza.jpg); }
-
-.footerestilo1, .footerestilo {
-  font-size: 1.5rem;
-  text-align: center;
-  color: antiquewhite; }
-
-/* EXTEND */
-.footerestilo {
-  font-size: 1.75rem; }
-
 .imagen:hover {
   filter: saturate(180%);
   transition: all 1s; }
@@ -43,6 +31,26 @@ body {
 
 .contenedor {
   overflow: hidden; }
+
+.transform4:hover {
+  transform: rotateY(360deg);
+  transition: all 3s; }
+
+.giro:hover {
+  transform: rotate(360deg);
+  transition: all 3s; }
+
+body {
+  background-image: url(../src/images/fondo-pizza.jpg); }
+
+.footerestilo1, .footerestilo {
+  font-size: 1.5rem;
+  text-align: center;
+  color: antiquewhite; }
+
+/* EXTEND */
+.footerestilo {
+  font-size: 1.75rem; }
 
 .btn-primary {
   background-color: #0f8d3f; }
@@ -65,10 +73,6 @@ body {
 
 .btn-wsp:hover {
   background: #20ba5a; }
-
-.transform4:hover {
-  transform: rotateY(360deg);
-  transition: all 3s; }
 
 .map-responsive {
   overflow: hidden;
