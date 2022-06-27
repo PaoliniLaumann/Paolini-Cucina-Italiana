@@ -85,30 +85,30 @@
     <section class="container-fluid">
         <div class="row d-flex align-items-center">
             <div class="col-md-6 text-center text-white fs-2 text-center px-5">
-                <form class="row g-3">
+                <form id="formulario" class="row g-3">
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Nombre y Apellido</label>
-                        <input type="text" class="form-control" id="inputEmail4">
+                        <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese su Nombre Completo">
                     </div>
                     <div class="col-md-12">
                         <label for="inputPassword4" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="inputPassword4">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="ej: (2923) 15425535">
+                        <input type="text" class="form-control" id="inputTelefono" placeholder="ej: (2923) 15425535">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Recomendaciones Especiales</label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                        <input type="text" class="form-control" id="inputRecomendaciones" placeholder="Ingrese Pedidos Especiales">
                     </div>
                     <div class="col-md-12">
                         <label for="inputCity" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" id="inputCity">
+                        <input type="date" class="form-control" id="inputFecha">
                     </div>
                     <div class="col-md-12">
                         <label for="inputState" class="form-label">Cant. Personas</label>
-                        <select id="inputState" class="form-select">
+                        <select id="inputPersonas" type="number" class="form-select">
                             <option selected>Elige</option>
                             <option>1</option>
                             <option>2</option>
@@ -211,7 +211,15 @@
     <div class="container-fluid text-center">
         <img src="../images/footer_platos.webp" class="img-fluid" alt="Responsive image">
     </div>
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script> -->
+<!-- Sweet alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Toastify -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/toastify-es.min.js"></script> -->
+<!-- <script src="./index_eventos.js"></script> -->
+    <script src="../../jss/form.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
 </body>
 

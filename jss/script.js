@@ -48,7 +48,7 @@ const productos = [
     nombre: "Pizza Fugazzeta",
     categoria: "Pizzas",
     precio: 1000,
-    img: "../../src/images/image4.webp",
+    img: "../../src/images/image2.webp",
   },
   {
     id: 4,
@@ -80,16 +80,16 @@ const productos = [
   },
   {
     id: 8,
-    nombre: "Pizza con champiñones",
+    nombre: "Pizza de champiñones",
     categoria: "Pizzas",
     precio: 1250,
     img: "../../src/images/image3.webp",
   },
   {
     id: 9,
-    nombre: "Pizza con jamon y tocino",
-    categoria: "Pizzas",
-    precio: 1300,
+    nombre: "Picada Completa",
+    categoria: "Picadas",
+    precio: 1600,
     img: "../../src/images/image4.webp",
   },
 ];
@@ -117,10 +117,10 @@ function imprimirProductosEnHTML(array) {
   contenedor.innerHTML = "";
   for (const producto of array) {
     let card = document.createElement("div");
-    card.innerHTML = `<div class="card text-center" style="width: 24rem;">
+    card.innerHTML = `<div class="card text-center" style="width: 22rem;">
           <div class="card-body">
               <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
-              <h2 class="card-title">${producto.nombre}</h2>
+              <h2 class="card-title fs-3">${producto.nombre}</h2>
               <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
               <p class="card-text">$${producto.precio}</p>
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -164,7 +164,8 @@ function eliminarDelCarrito(id) {
     carrito.splice(index, 1);
   }
 
-  swal("Producto eliminado con éxito", "", "success");
+  swal("Producto eliminado con éxito", "", "success"); 
+  
 
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);
