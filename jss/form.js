@@ -24,9 +24,13 @@ formulario.addEventListener("submit", (e) => {
 });
 
 const mensaje = () => {
-  swal(
-    `HOLA ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito`,
-    "",
-    "success"
-  );
+  if (nombreUsuario === `` || fechaReserva === ``) {
+    swal(`Ingresa tu Nombre y Fecha de reserva`, "", "error");
+  } else {
+    swal(
+      `Hola ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito`,
+      "",
+      "success"
+    );
+  }
 };
