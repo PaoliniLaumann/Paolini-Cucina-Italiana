@@ -1,16 +1,32 @@
+let nombreUsuario;
+let fechaReserva;
+
 const formulario = document.querySelector("#formulario");
+const nombre = document.querySelector("#inputNombre");
+const email = document.querySelector("#inputEmail");
+const telefono = document.querySelector("#inputTelefono");
+const recomendaciones = document.querySelector("#inputRecomendaciones");
+const fecha = document.querySelector("#inputFecha");
+const cantidad = document.querySelector("#inputPersonas");
 
-formulario.addEventListener( "submit", validarFormulario );
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  nombreUsuario = nombre.value;
+  fechaReserva = fecha.value;
 
-function validarFormulario (e) {
-    e.preventDefault();
-    const nombre = document.querySelector("#inputNombre").value
-    const email = document.querySelector("#inputEmail").value
-    const telefono = document.querySelector("#inputTelefono").value
-    const recomendaciones = document.querySelector("#inputRecomendaciones").value
-    const fecha = document.querySelector("#inputFecha").value
-    const cantidad = document.querySelector("#inputPersonas").value
-    console.log(nombre, email, telefono, recomendaciones, fecha, cantidad)
-    swal(`HOLA ${nombre},tu reserva para el dia ${fecha} se realizo con exito`, "", "success");
+  localStorage.setItem(`nombre`, nombre.value);
+  localStorage.setItem(`email`, email.value);
+  localStorage.setItem(`telefono`, telefono.value);
+  localStorage.setItem(`recomendaciones`, recomendaciones.value);
+  localStorage.setItem(`fecha`, fecha.value);
+  localStorage.setItem(`cantidad`, cantidad.value);
+  mensaje();
+});
+
+const mensaje = () => {
+  swal(
+    `HOLA ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito`,
+    "",
+    "success"
+  );
 };
-
