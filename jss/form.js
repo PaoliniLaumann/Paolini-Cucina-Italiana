@@ -1,5 +1,6 @@
 let nombreUsuario;
 let fechaReserva;
+let emailUsusario;
 
 const formulario = document.querySelector("#formulario");
 const nombre = document.querySelector("#inputNombre");
@@ -13,6 +14,7 @@ formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   nombreUsuario = nombre.value;
   fechaReserva = fecha.value;
+  emailUsusario = email.value;
 
   localStorage.setItem(`nombre`, nombre.value);
   localStorage.setItem(`email`, email.value);
@@ -24,11 +26,12 @@ formulario.addEventListener("submit", (e) => {
 });
 
 const mensaje = () => {
-  if (nombreUsuario === `` || fechaReserva === ``) {
+  if (nombreUsuario === `` || fechaReserva === `` || emailUsusario === ``) {
     swal(`Ingresa tu Nombre y Fecha de reserva`, "", "error");
   } else {
     swal(
-      `Hola ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito`,
+      `Hola ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito
+      te llegara la confirmacion a ${emailUsusario}`,
       "",
       "success"
     );
