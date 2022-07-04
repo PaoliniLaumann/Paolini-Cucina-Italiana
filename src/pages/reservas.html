@@ -88,27 +88,27 @@
                 <form id="formulario" class="row g-3">
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Nombre y Apellido</label>
-                        <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese su Nombre Completo">
+                        <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese su Nombre Completo" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputPassword4" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" id="inputTelefono" placeholder="ej: (2923) 15425535">
+                        <input type="number" class="form-control" id="inputTelefono" placeholder="ej: (2923) 15425535" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Recomendaciones Especiales</label>
-                        <input type="text" class="form-control" id="inputRecomendaciones" placeholder="Ingrese Pedidos Especiales">
+                        <input type="text" class="form-control" id="inputRecomendaciones" placeholder="Ingrese Pedidos Especiales" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputCity" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" id="inputFecha">
+                        <input type="date" class="form-control" id="inputFecha" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputState" class="form-label">Cant. Personas</label>
-                        <select id="inputPersonas" type="number" class="form-select">
+                        <select id="inputPersonas"  type="number" min="1" max="10" class="form-select" >
                             <option selected>Elige</option>
                             <option>1</option>
                             <option>2</option>

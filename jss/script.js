@@ -94,6 +94,7 @@ const productos = [
   },
 ];
 
+
 let carrito;
 
 function chequearCarritoEnStorage() {
@@ -124,7 +125,7 @@ function imprimirProductosEnHTML(array) {
               <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
               <p class="card-text">$${producto.precio}</p>
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                  <button id="agregar${producto.id}" type="button" class="btn btn-dark"> Agregar </button>
+                  <button id="agregar${producto.id}" type="button" class="btn btn-success"> Agregar </button>
               </div>
           </div>
       </div>`;
@@ -213,11 +214,11 @@ function imprimirTabla(array) {
   for (let producto of array) {
     let datos = document.createElement("tr");
     datos.innerHTML = `
-              <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
+              <img src="${producto.img}" id="" class="img-fluid" alt="">
               <td>${producto.nombre}</td>
               <td>${producto.cantidad}</td>
               <td>$${producto.precioTotal}</td>
-              <td><button id="eliminar${producto.id}" class="btn btn-dark">Eliminar</button></td>
+              <td><button id="eliminar${producto.id}" class="btn btn-danger">Eliminar</button></td>
     `;
 
     bodyTabla.appendChild(datos);
@@ -231,7 +232,7 @@ function imprimirTabla(array) {
   let accionesCarrito = document.getElementById("acciones-carrito");
   accionesCarrito.innerHTML = `
   <h5>PrecioTotal: $${precioTotal}</h5></br>
-  <button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
+  <button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-danger">Vaciar Carrito</button>
 `;
 }
 
@@ -251,3 +252,5 @@ btnFiltrar.addEventListener("click", filtrarBusqueda);
 imprimirProductosEnHTML(productos);
 
 carrito = chequearCarritoEnStorage();
+
+
