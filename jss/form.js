@@ -16,7 +16,7 @@ formulario.addEventListener("submit", (e) => {
     fecha: inputFecha.value,
     cantidad: inputPersonas.value,
   };
-  console.log(datosUsuario);
+  
   validar(datosUsuario);
 });
 
@@ -31,6 +31,7 @@ const validar = (datosUsuario) => {
 
 const guardarStorage = (datosUsuario) => {
   localStorage.setItem(`obj`, JSON.stringify(datosUsuario));
+  obtenerStorage();
 };
 
 const obtenerStorage = () => {
