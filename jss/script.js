@@ -19,6 +19,7 @@ class Producto {
   actualizarPrecioTotal() {
     this.precioTotal = this.precio * this.cantidad;
   }
+  
 }
 
 const productos = [
@@ -94,6 +95,7 @@ const productos = [
   },
 ];
 
+console.log (...productos);
 
 let carrito;
 
@@ -105,12 +107,14 @@ function chequearCarritoEnStorage() {
       let producto = new Producto(objeto, objeto.cantidad);
       producto.actualizarPrecioTotal();
       array.push(producto);
+      console.log(...contenidoEnStorage); 
     }
     imprimirTabla(array);
     return array;
   }
 
   return [];
+  
 }
 
 function imprimirProductosEnHTML(array) {

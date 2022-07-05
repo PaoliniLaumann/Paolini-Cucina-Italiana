@@ -1,37 +1,53 @@
-let nombreUsuario;
-let fechaReserva;
-let emailUsusario;
-let cantidadPersonas;
-
 const formulario = document.querySelector("#formulario");
-const nombre = document.querySelector("#inputNombre");
-const email = document.querySelector("#inputEmail");
-const telefono = document.querySelector("#inputTelefono");
-const recomendaciones = document.querySelector("#inputRecomendaciones");
-const fecha = document.querySelector("#inputFecha");
-const cantidad = document.querySelector("#inputPersonas");
+const inputNombre = document.querySelector("#inputNombre");
+const inputEmail = document.querySelector("#inputEmail");
+const inputTelefono = document.querySelector("#inputTelefono");
+const inputRecomendaciones = document.querySelector("#inputRecomendaciones");
+const inputFecha = document.querySelector("#inputFecha");
+const inputPersonas = document.querySelector("#inputPersonas");
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
-  nombreUsuario = nombre.value;
-  fechaReserva = fecha.value;
-  emailUsusario = email.value;
-  cantidadPersonas = cantidad.value;
-  localStorage.setItem(`nombre`, nombre.value);
-  localStorage.setItem(`email`, email.value);
-  localStorage.setItem(`telefono`, telefono.value);
-  localStorage.setItem(`recomendaciones`, recomendaciones.value);
-  localStorage.setItem(`fecha`, fecha.value);
-  localStorage.setItem(`cantidad`, cantidad.value);
-  mensaje();
+  const datosUsuario = {
+    name: inputNombre.value,
+    email: inputEmail.value,
+    telefono: inputTelefono.value,
+    recomendaciones: inputRecomendaciones.value,
+    fecha: inputFecha.value,
+    cantidad: inputPersonas.value,
+  };
+  console.log(datosUsuario);
+  validar(datosUsuario);
 });
 
-const mensaje = () => {  
-    swal(
-      `Hola ${nombreUsuario},tu reserva para el dia ${fechaReserva} se realizo con exito
-      te llegara la confirmacion a ${emailUsusario}`,
-      "",
-      "success"
-    );
-}
+const validar = (datosUsuario) => {
+  if (datosUsuario.name && datosUsuario.email && datosUsuario.fecha !== "") {
+    mensajeExitoso(datosUsuario);
+    guardarStorage(datosUsuario);
+  } else {
+    mensajeError(datosUsuario);
+  }
+};
 
+const guardarStorage = (datosUsuario) => {
+  localStorage.setItem(`obj`, JSON.stringify(datosUsuario));
+};
+
+const obtenerStorage = () => {
+  const storage = JSON.parse(localStorage.getItem("obj"));
+  console.log(storage, "SOY DEL STORAGE");
+};
+
+const mensajeExitoso = (datosUsuario) => {
+  swal(
+    `Hola ${datosUsuario.name},tu reserva para el dia ${datosUsuario.fecha} se realizo con exito
+    te llegara la confirmacion a ${datosUsuario.email}`,
+    "",
+    "success"
+  );
+};
+
+const mensajeError = (datosUsuario) => {
+  swal(`Hola tienes que ingresar tus datos`, "", "error");
+};
+ 
