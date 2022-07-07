@@ -169,7 +169,7 @@ function eliminarDelCarrito(id) {
     carrito.splice(index, 1);
   }
 
-  swal("Producto eliminado con éxito", "", "success"); 
+  swal.fire("Producto eliminado con éxito", "", "success"); 
   
 
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));

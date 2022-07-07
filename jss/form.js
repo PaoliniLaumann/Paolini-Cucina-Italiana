@@ -30,17 +30,17 @@ const validar = (datosUsuario) => {
 };
 
 const guardarStorage = (datosUsuario) => {
-  localStorage.setItem(`obj`, JSON.stringify(datosUsuario));
+  localStorage.setItem(`reserva`, JSON.stringify(datosUsuario));
   obtenerStorage();
 };
 
 const obtenerStorage = () => {
-  const storage = JSON.parse(localStorage.getItem("obj"));
-  console.log(storage, "SOY DEL STORAGE");
+  const storage = JSON.parse(localStorage.getItem("reserva"));
+  console.log(storage, "SOY RESERVAS DEL STORAGE");
 };
 
 const mensajeExitoso = (datosUsuario) => {
-  swal(
+  swal.fire(
     `Hola ${datosUsuario.name},tu reserva para el dia ${datosUsuario.fecha} se realizo con exito
     te llegara la confirmacion a ${datosUsuario.email}`,
     "",
@@ -49,6 +49,6 @@ const mensajeExitoso = (datosUsuario) => {
 };
 
 const mensajeError = (datosUsuario) => {
-  swal(`Hola tienes que ingresar tus datos`, "", "error");
+  swal.fire(`Hola tienes que ingresar todos los datos`, "", "error");
 };
  
