@@ -152,7 +152,14 @@ function agregarAlCarrito(idProducto) {
   } else {
     carrito.push(new Producto(productos[idProducto], 1));
   }
-
+  Toastify({
+    text: "El Producto se Agrego con Exito",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right,  #90f511 ,  #2ae33b)",
+      color: "#000000"
+    }
+  }).showToast();
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);
 }
@@ -168,8 +175,14 @@ function eliminarDelCarrito(id) {
   } else {
     carrito.splice(index, 1);
   }
+  Toastify({
+    text: "El Producto se Borro con Exito",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #ff0039, #f1402f)",
+    }
+  }).showToast();
 
-  swal.fire("Producto eliminado con éxito", "", "success"); 
   
 
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
