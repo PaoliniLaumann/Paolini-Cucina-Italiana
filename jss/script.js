@@ -19,7 +19,6 @@ class Producto {
   actualizarPrecioTotal() {
     this.precioTotal = this.precio * this.cantidad;
   }
-  
 }
 
 const productos = [
@@ -95,7 +94,7 @@ const productos = [
   },
 ];
 
-console.log (...productos);
+console.log(...productos);
 
 let carrito;
 
@@ -107,39 +106,28 @@ function chequearCarritoEnStorage() {
       let producto = new Producto(objeto, objeto.cantidad);
       producto.actualizarPrecioTotal();
       array.push(producto);
-      console.log(...contenidoEnStorage); 
+      console.log(...contenidoEnStorage);
     }
     imprimirTabla(array);
     return array;
   }
 
   return [];
-  
 }
 
-function imprimirProductosEnHTML(array) {
-  let contenedor = document.getElementById("contenedor");
-  contenedor.innerHTML = "";
-  for (const producto of array) {
-    let card = document.createElement("div");
-    card.innerHTML = `<div class="card text-center" style="width: 22rem;">
-          <div class="card-body">
-              <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
-              <h2 class="card-title fs-3">${producto.nombre}</h2>
-              <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
-              <p class="card-text">$${producto.precio}</p>
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                  <button id="agregar${producto.id}" type="button" class="btn btn-success"> Agregar </button>
-              </div>
-          </div>
-      </div>`;
 
-    contenedor.appendChild(card);
-    let boton = document.getElementById(`agregar${producto.id}`);
-    boton.addEventListener("click", () => agregarAlCarrito(producto.id));
-  }
+function imprimirProductosEnHTML(array) {  
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = true;
+      if (res) {
+        resolve(array);
+      } else {
+        reject(400);
+      }
+    }, 1000);
+  });
 }
-
 function agregarAlCarrito(idProducto) {
   let pizzaEnCarrito = carrito.find((elemento) => elemento.id === idProducto);
 
@@ -157,8 +145,8 @@ function agregarAlCarrito(idProducto) {
     className: "info",
     style: {
       background: "linear-gradient(to right,  #90f511 ,  #2ae33b)",
-      color: "#000000"
-    }
+      color: "#000000",
+    },
   }).showToast();
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);
@@ -180,10 +168,8 @@ function eliminarDelCarrito(id) {
     className: "info",
     style: {
       background: "linear-gradient(to right, #ff0039, #f1402f)",
-    }
+    },
   }).showToast();
-
-  
 
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);
@@ -266,8 +252,33 @@ function filtrarBusqueda(e) {
 let btnFiltrar = document.getElementById("btnFiltrar");
 btnFiltrar.addEventListener("click", filtrarBusqueda);
 
-imprimirProductosEnHTML(productos);
+imprimirProductosEnHTML(productos)
+  .then((array) => {
+    let contenedor = document.getElementById("contenedor");
+    contenedor.innerHTML = "";
+    for (const producto of array) {
+      let card = document.createElement("div");
+      card.innerHTML = `<div class="card text-center" style="width: 22rem;">
+          <div class="card-body">
+              <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
+              <h2 class="card-title fs-3">${producto.nombre}</h2>
+              <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
+              <p class="card-text">$${producto.precio}</p>
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                  <button id="agregar${producto.id}" type="button" class="btn btn-success"> Agregar </button>
+              </div>
+          </div>
+      </div>`;
+
+      contenedor.appendChild(card);
+      let boton = document.getElementById(`agregar${producto.id}`);
+      boton.addEventListener("click", () => agregarAlCarrito(producto.id));
+    }
+  })
+  .catch(error => {
+    eliminarCarrito();
+    contenedor.innerHTML = swal.fire(`No encontramos Productos`, "", "error");
+    contenedor.innerHTML = ""
+  });
 
 carrito = chequearCarritoEnStorage();
-
-
