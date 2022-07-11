@@ -119,16 +119,16 @@ function chequearCarritoEnStorage() {
 function imprimirProductosEnHTML(array) {  
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const res = true;
+      const res = true; //cambiando a false se simula una conexion fallida con la base de datos//
       if (res) {
         resolve(array);
       } else {
         reject(400);
       }
-    }, 1000);
+    }, 2000);
   });
 }
-function agregarAlCarrito(idProducto) {
+function agregarAlCarrito(idProducto, nombre_pro) {
   let pizzaEnCarrito = carrito.find((elemento) => elemento.id === idProducto);
 
   if (pizzaEnCarrito) {
@@ -141,7 +141,7 @@ function agregarAlCarrito(idProducto) {
     carrito.push(new Producto(productos[idProducto], 1));
   }
   Toastify({
-    text: "El Producto se Agrego con Exito",
+    text:`${nombre_pro} se Agrego con Exito`,
     className: "info",
     style: {
       background: "linear-gradient(to right,  #90f511 ,  #2ae33b)",
@@ -152,7 +152,7 @@ function agregarAlCarrito(idProducto) {
   imprimirTabla(carrito);
 }
 
-function eliminarDelCarrito(id) {
+function eliminarDelCarrito(id, nombre_pro) {
   let producto = carrito.find((producto) => producto.id === id);
 
   let index = carrito.findIndex((element) => element.id === producto.id);
@@ -164,7 +164,7 @@ function eliminarDelCarrito(id) {
     carrito.splice(index, 1);
   }
   Toastify({
-    text: "El Producto se Borro con Exito",
+    text: `${nombre_pro} se Borro con Exito`,
     className: "info",
     style: {
       background: "linear-gradient(to right, #ff0039, #f1402f)",
@@ -228,7 +228,7 @@ function imprimirTabla(array) {
 
     let botonEliminar = document.getElementById(`eliminar${producto.id}`);
     botonEliminar.addEventListener("click", () =>
-      eliminarDelCarrito(producto.id)
+      eliminarDelCarrito(producto.id, producto.nombre)
     );
   }
 
@@ -272,7 +272,7 @@ imprimirProductosEnHTML(productos)
 
       contenedor.appendChild(card);
       let boton = document.getElementById(`agregar${producto.id}`);
-      boton.addEventListener("click", () => agregarAlCarrito(producto.id));
+      boton.addEventListener("click", () => agregarAlCarrito(producto.id, producto.nombre));
     }
   })
   .catch(error => {
