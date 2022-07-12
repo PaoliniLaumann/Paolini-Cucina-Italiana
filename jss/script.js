@@ -221,7 +221,7 @@ function imprimirTabla(array) {
               <td>${producto.nombre}</td>
               <td>${producto.cantidad}</td>
               <td>$${producto.precioTotal}</td>
-              <td><button id="eliminar${producto.id}" class="btn btn-danger">Eliminar</button></td>
+              <td><button id="eliminar${producto.id}"class="btn btn-danger">Eliminar</button></td>
     `;
 
     bodyTabla.appendChild(datos);
