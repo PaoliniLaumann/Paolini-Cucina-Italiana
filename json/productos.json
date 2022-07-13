@@ -1,0 +1,72 @@
+[
+    {
+        "id": 0,
+        "nombre": "Pizza Napolitana",
+        "categoria": "Pizzas",
+        "precio": 900,
+        "img": "../../src/images/image1.webp"
+      },
+      {
+        "id": 1,
+        "nombre": "Pizza Muzzarella",
+        "categoria": "Pizzas",
+        "precio": 950,
+        "img": "../../src/images/image2.webp"
+      },
+      {
+        "id": 2,
+        "nombre": "Pizza con Jamon",
+        "categoria": "Pizzas",
+        "precio": 1000,
+        "img": "../../src/images/image3.webp"
+      },
+      {
+        "id": 3,
+        "nombre": "Pizza Fugazzeta",
+        "categoria": "Pizzas",
+        "precio": 1000,
+        "img": "../../src/images/image2.webp"
+      },
+      {
+        "id": 4,
+        "nombre": "Pizza calabresa",
+        "categoria": "Pizzas",
+        "precio": 1100,
+        "img": "../../src/images/image5.webp"
+      },
+      {
+        "id": 5,
+        "nombre": "Pizza de pepperoni",
+        "categoria": "Pizzas",
+        "precio": 1200,
+        "img": "../../src/images/image6.webp"
+      },
+      {
+        "id": 6,
+        "nombre": "Pizza cuatro quesos",
+        "categoria": "Pizzas",
+        "precio": 1200,
+        "img": "../../src/images/image1.webp"
+      },
+      {
+        "id": 7,
+        "nombre": "Pizza margarita",
+        "categoria": "Pizzas",
+        "precio": 1200,
+        "img": "../../src/images/image2.webp"
+      },
+      {
+        "id": 8,
+        "nombre": "Pizza de champiñones",
+        "categoria": "Pizzas",
+        "precio": 1250,
+        "img": "../../src/images/image3.webp"
+      },
+      {
+        "id": 9,
+        "nombre": "Picada Completa",
+        "categoria": "Picadas",
+        "precio": 1600,
+        "img": "../../src/images/image4.webp"
+      }
+]

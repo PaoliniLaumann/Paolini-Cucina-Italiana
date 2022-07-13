@@ -21,80 +21,80 @@ class Producto {
   }
 }
 
-const productos = [
-  {
-    id: 0,
-    nombre: "Pizza Napolitana",
-    categoria: "Pizzas",
-    precio: 900,
-    img: "../../src/images/image1.webp",
-  },
-  {
-    id: 1,
-    nombre: "Pizza Muzzarella",
-    categoria: "Pizzas",
-    precio: 950,
-    img: "../../src/images/image2.webp",
-  },
-  {
-    id: 2,
-    nombre: "Pizza con Jamon",
-    categoria: "Pizzas",
-    precio: 1000,
-    img: "../../src/images/image3.webp",
-  },
-  {
-    id: 3,
-    nombre: "Pizza Fugazzeta",
-    categoria: "Pizzas",
-    precio: 1000,
-    img: "../../src/images/image2.webp",
-  },
-  {
-    id: 4,
-    nombre: "Pizza calabresa",
-    categoria: "Pizzas",
-    precio: 1100,
-    img: "../../src/images/image5.webp",
-  },
-  {
-    id: 5,
-    nombre: "Pizza de pepperoni",
-    categoria: "Pizzas",
-    precio: 1200,
-    img: "../../src/images/image6.webp",
-  },
-  {
-    id: 6,
-    nombre: "Pizza cuatro quesos",
-    categoria: "Pizzas",
-    precio: 1200,
-    img: "../../src/images/image1.webp",
-  },
-  {
-    id: 7,
-    nombre: "Pizza margarita",
-    categoria: "Pizzas",
-    precio: 1200,
-    img: "../../src/images/image2.webp",
-  },
-  {
-    id: 8,
-    nombre: "Pizza de champiñones",
-    categoria: "Pizzas",
-    precio: 1250,
-    img: "../../src/images/image3.webp",
-  },
-  {
-    id: 9,
-    nombre: "Picada Completa",
-    categoria: "Picadas",
-    precio: 1600,
-    img: "../../src/images/image4.webp",
-  },
-];
+const imprimirProductosEnHTML = () => {
+  fetch(`/../json/productos.json`)
+    .then((res) => res.json())
+    .then((array) => {
+      console.log(array);
+      let contenedor = document.getElementById("contenedor");
+      contenedor.innerHTML = "";
+      for (const producto of array) {
+        let card = document.createElement("div");
+        card.innerHTML = `<div class="card text-center" style="width: 22rem;">
+        <div class="card-body">
+            <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
+            <h2 class="card-title fs-3">${producto.nombre}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
+            <p class="card-text">$${producto.precio}</p>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button id="agregar${producto.id}" type="button" class="btn btn-success"> Agregar </button>
+            </div>
+        </div>
+    </div>`;
 
-console.log(...productos);
+        contenedor.appendChild(card);
+        let boton = document.getElementById(`agregar${producto.id}`);
+        boton.addEventListener("click", () =>
+          agregarAlCarrito(producto.id, producto.nombre)
+        );
+      }
+      function agregarAlCarrito(idProducto, nombre_pro) {
+        console.log(idProducto, nombre_pro);
+        let pizzaEnCarrito = carrito.find(
+          (elemento) => elemento.id === idProducto
+        );
+
+        if (pizzaEnCarrito) {
+          let index = carrito.findIndex(
+            (elemento) => elemento.id === pizzaEnCarrito.id
+          );
+          carrito[index].agregarUnidad();
+          carrito[index].actualizarPrecioTotal();
+        } else {
+          carrito.push(new Producto(array[idProducto], 1));
+        }
+        Toastify({
+          text: `${nombre_pro} se Agrego con Exito`,
+          className: "info",
+          style: {
+            background: "linear-gradient(to right,  #90f511 ,  #2ae33b)",
+            color: "#000000",
+          },
+        }).showToast();
+        localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
+        imprimirTabla(carrito);
+        console.log(carrito);
+      }
+    })
+    .catch((error) => {
+      eliminarCarrito();
+      contenedor.innerHTML = swal.fire(`No encontramos Productos`, "", "error");
+      contenedor.innerHTML = "";
+    });
+};
+
+function filtrarBusqueda(e) {
+  e.preventDefault();
+  let ingreso = document.getElementById("busqueda").value.toLowerCase();
+  let arrayFiltrado = productos.filter((elemento) =>
+    elemento.nombre.toLowerCase().includes(ingreso)
+  );
+
+  imprimirProductosEnHTML(arrayFiltrado);
+}
+
+let btnFiltrar = document.getElementById("btnFiltrar");
+btnFiltrar.addEventListener("click", filtrarBusqueda);
 
 let carrito;
 
@@ -106,7 +106,6 @@ function chequearCarritoEnStorage() {
       let producto = new Producto(objeto, objeto.cantidad);
       producto.actualizarPrecioTotal();
       array.push(producto);
-      console.log(...contenidoEnStorage);
     }
     imprimirTabla(array);
     return array;
@@ -115,8 +114,7 @@ function chequearCarritoEnStorage() {
   return [];
 }
 
-
-function imprimirProductosEnHTML(array) {  
+/* function imprimirProductosEnHTML(array) {  
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const res = true; //cambiando a false se simula una conexion fallida con la base de datos//
@@ -127,30 +125,8 @@ function imprimirProductosEnHTML(array) {
       }
     }, 2000);
   });
-}
-function agregarAlCarrito(idProducto, nombre_pro) {
-  let pizzaEnCarrito = carrito.find((elemento) => elemento.id === idProducto);
+} */
 
-  if (pizzaEnCarrito) {
-    let index = carrito.findIndex(
-      (elemento) => elemento.id === pizzaEnCarrito.id
-    );
-    carrito[index].agregarUnidad();
-    carrito[index].actualizarPrecioTotal();
-  } else {
-    carrito.push(new Producto(productos[idProducto], 1));
-  }
-  Toastify({
-    text:`${nombre_pro} se Agrego con Exito`,
-    className: "info",
-    style: {
-      background: "linear-gradient(to right,  #90f511 ,  #2ae33b)",
-      color: "#000000",
-    },
-  }).showToast();
-  localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
-  imprimirTabla(carrito);
-}
 
 function eliminarDelCarrito(id, nombre_pro) {
   let producto = carrito.find((producto) => producto.id === id);
@@ -239,46 +215,7 @@ function imprimirTabla(array) {
 `;
 }
 
-function filtrarBusqueda(e) {
-  e.preventDefault();
-  let ingreso = document.getElementById("busqueda").value.toLowerCase();
-  let arrayFiltrado = productos.filter((elemento) =>
-    elemento.nombre.toLowerCase().includes(ingreso)
-  );
-
-  imprimirProductosEnHTML(arrayFiltrado);
-}
-
-let btnFiltrar = document.getElementById("btnFiltrar");
-btnFiltrar.addEventListener("click", filtrarBusqueda);
-
-imprimirProductosEnHTML(productos)
-  .then((array) => {
-    let contenedor = document.getElementById("contenedor");
-    contenedor.innerHTML = "";
-    for (const producto of array) {
-      let card = document.createElement("div");
-      card.innerHTML = `<div class="card text-center" style="width: 22rem;">
-          <div class="card-body">
-              <img src="${producto.img}" id="" class="card-img-top img-fluid" alt="">
-              <h2 class="card-title fs-3">${producto.nombre}</h2>
-              <h5 class="card-subtitle mb-2 text-muted">${producto.categoria}</h5>
-              <p class="card-text">$${producto.precio}</p>
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                  <button id="agregar${producto.id}" type="button" class="btn btn-success"> Agregar </button>
-              </div>
-          </div>
-      </div>`;
-
-      contenedor.appendChild(card);
-      let boton = document.getElementById(`agregar${producto.id}`);
-      boton.addEventListener("click", () => agregarAlCarrito(producto.id, producto.nombre));
-    }
-  })
-  .catch(error => {
-    eliminarCarrito();
-    contenedor.innerHTML = swal.fire(`No encontramos Productos`, "", "error");
-    contenedor.innerHTML = ""
-  });
 
 carrito = chequearCarritoEnStorage();
+
+imprimirProductosEnHTML();
