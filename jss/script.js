@@ -22,7 +22,7 @@ class Producto {
 }
 
 const imprimirProductosEnHTML = () => {
-  fetch( `../../json/productos.json`)
+  fetch( `https://paolinilaumann.github.io/Paolini-Cucina-Italiana/json/productos.json`)
     .then((res) => res.json())
     .then((array) => {
       console.log(array);
