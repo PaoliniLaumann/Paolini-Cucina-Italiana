@@ -22,10 +22,11 @@ class Producto {
 }
 
 const imprimirProductosEnHTML = () => {
-  fetch( `https://paolinilaumann.github.io/Paolini-Cucina-Italiana/json/productos.json`)
+  fetch(
+    `https://paolinilaumann.github.io/Paolini-Cucina-Italiana/json/productos.json`
+  )
     .then((res) => res.json())
-    .then((array) => {
-      console.log(array);
+    .then((array) => {      
       let contenedor = document.getElementById("contenedor");
       contenedor.innerHTML = "";
       for (const producto of array) {
@@ -48,8 +49,7 @@ const imprimirProductosEnHTML = () => {
           agregarAlCarrito(producto.id, producto.nombre)
         );
       }
-      function agregarAlCarrito(idProducto, nombre_pro) {
-        console.log(idProducto, nombre_pro);
+      function agregarAlCarrito(idProducto, nombre_pro) {       
         let pizzaEnCarrito = carrito.find(
           (elemento) => elemento.id === idProducto
         );
@@ -73,8 +73,22 @@ const imprimirProductosEnHTML = () => {
         }).showToast();
         localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
         imprimirTabla(carrito);
-        console.log(carrito);
+        
       }
+      function filtrarBusqueda(e) {
+        e.preventDefault();
+        let ingreso = document.getElementById("busqueda").value.toLowerCase();
+        let arrayFiltrado = array.filter((elemento) =>
+          elemento.nombre.toLowerCase().includes(ingreso)
+          
+        );
+
+        imprimirProductosEnHTML(arrayFiltrado);
+        console.log(arrayFiltrado);
+      }
+
+      let btnFiltrar = document.getElementById("btnFiltrar");
+      btnFiltrar.addEventListener("click", filtrarBusqueda);
     })
     .catch((error) => {
       eliminarCarrito();
@@ -82,19 +96,6 @@ const imprimirProductosEnHTML = () => {
       contenedor.innerHTML = "";
     });
 };
-
-function filtrarBusqueda(e) {
-  e.preventDefault();
-  let ingreso = document.getElementById("busqueda").value.toLowerCase();
-  let arrayFiltrado = productos.filter((elemento) =>
-    elemento.nombre.toLowerCase().includes(ingreso)
-  );
-
-  imprimirProductosEnHTML(arrayFiltrado);
-}
-
-let btnFiltrar = document.getElementById("btnFiltrar");
-btnFiltrar.addEventListener("click", filtrarBusqueda);
 
 let carrito;
 
@@ -113,19 +114,6 @@ function chequearCarritoEnStorage() {
 
   return [];
 }
-
-/* function imprimirProductosEnHTML(array) {  
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const res = true; //cambiando a false se simula una conexion fallida con la base de datos//
-      if (res) {
-        resolve(array);
-      } else {
-        reject(400);
-      }
-    }, 2000);
-  });
-} */
 
 
 function eliminarDelCarrito(id, nombre_pro) {
@@ -214,7 +202,6 @@ function imprimirTabla(array) {
   <button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-danger">Vaciar Carrito</button>
 `;
 }
-
 
 carrito = chequearCarritoEnStorage();
 
