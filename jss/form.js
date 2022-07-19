@@ -7,7 +7,6 @@ const inputFecha = document.querySelector("#inputFecha");
 const inputPersonas = document.querySelector("#inputPersonas");
 
 formulario.addEventListener("submit", (e) => {
-  e.preventDefault();
   const datosUsuario = {
     name: inputNombre.value,
     email: inputEmail.value,
@@ -16,14 +15,14 @@ formulario.addEventListener("submit", (e) => {
     fecha: inputFecha.value,
     cantidad: inputPersonas.value,
   };
-  
+
   validar(datosUsuario);
 });
 
 const validar = (datosUsuario) => {
-  if (datosUsuario.name && datosUsuario.email && datosUsuario.fecha !== "") {
+  if (datosUsuario.name && datosUsuario.email && datosUsuario.fecha  !== "" ) {
     mensajeExitoso(datosUsuario);
-    guardarStorage(datosUsuario);
+    guardarStorage(datosUsuario);    
   } else {
     mensajeError(datosUsuario);
   }
@@ -35,8 +34,7 @@ const guardarStorage = (datosUsuario) => {
 };
 
 const obtenerStorage = () => {
-  const storage = JSON.parse(localStorage.getItem("reserva"));
-  console.log(storage, "SOY RESERVAS DEL STORAGE");
+  const storage = JSON.parse(localStorage.getItem("reserva")); 
 };
 
 const mensajeExitoso = (datosUsuario) => {
@@ -46,9 +44,9 @@ const mensajeExitoso = (datosUsuario) => {
     "",
     "success"
   );
+  /* document.getElementById('formulario').reset(); */
 };
 
 const mensajeError = (datosUsuario) => {
   swal.fire(`Hola tienes que ingresar todos los datos`, "", "error");
 };
- 
