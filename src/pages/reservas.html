@@ -85,22 +85,28 @@
     <section class="container-fluid">
         <div class="row d-flex align-items-center">
             <div class="col-md-6 text-center text-white fs-2 text-center px-5">
-                <form id="formulario" target="_blank" class="row g-3" action="https://formsubmit.co/paolinilaumann@gmail.com" method="POST" input type="hidden" name="_template" value="table">
+                <form id="formulario" target="_blank" class="row g-3"
+                    action="https://formsubmit.co/paolinilaumann@gmail.com" method="POST"  input type="hidden"
+                    name="_subject" value="table">
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Nombre y Apellido</label>
-                        <input type="text" name="Nombre"  class="form-control" id="inputNombre" placeholder="Ingrese su Nombre Completo" required>
+                        <input type="text" name="Nombre" class="form-control" id="inputNombre"
+                            placeholder="Ingrese su Nombre Completo" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="inputPassword4" class="form-label">E-mail</label>
-                        <input type="email" name="E-mail" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail" required>
+                        <label class="form-label">E-mail</label>
+                        <input type="email" name="Email" class="form-control" id="inputEmail"
+                            placeholder="Ingrese su E-mail" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Telefono</label>
-                        <input type="number" name = "Telefono" class="form-control" id="inputTelefono" placeholder="ej: (2923) 15425535" required>
+                        <input type="number" name="Telefono" class="form-control" id="inputTelefono"
+                            placeholder="ej: (2923) 15425535" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Recomendaciones Especiales</label>
-                        <input type="text" name="Recomendaciones" class="form-control" id="inputRecomendaciones" placeholder="Ingrese Pedidos Especiales" required>
+                        <input type="text" name="Recomendaciones" class="form-control" id="inputRecomendaciones"
+                            placeholder="Ingrese Pedidos Especiales" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputCity" class="form-label">Fecha</label>
@@ -108,7 +114,8 @@
                     </div>
                     <div class="col-md-12">
                         <label for="inputState" class="form-label">Cant. Personas</label>
-                        <select id="inputPersonas"  type="number" name="Personas" min="1" max="10" class="form-select" required>
+                        <select id="inputPersonas" type="number" name="Personas" min="1" max="10" class="form-select"
+                            required>
                             <option selected></option>
                             <option>1</option>
                             <option>2</option>
@@ -126,7 +133,7 @@
                     <div class="col-12 mt-4">
                         <button type="submit" class="btn btn-primary">Reserva</button>
                     </div>
-                   <!--  <div class="contact-form-loader">
+                    <!--  <div class="contact-form-loader">
                         <img src="../images/puff.svg" />
                     </div> -->
                 </form>
@@ -197,7 +204,8 @@
                             class="nav-link p-0 text-muted footerestilo1 contenedor imagen">Linkedin</a>
                     </li>
                     <li class="nav-item mb-2 contenedor"><a
-                            href="https://ar.pinterest.com/search/pins/?q=restaurantes%20italianos&rs=typed&term_meta[]=restaurantes%7Ctyped&term_meta[]=italianos%7Ctyped" target="_blank"
+                            href="https://ar.pinterest.com/search/pins/?q=restaurantes%20italianos&rs=typed&term_meta[]=restaurantes%7Ctyped&term_meta[]=italianos%7Ctyped"
+                            target="_blank"
                             class="nav-link p-0 text-muted footerestilo1 contenedor imagen">Pinterest</a>
                     </li>
                     <li class="nav-item mb-2 contenedor"><a href="https://twitter.com/?lang=es" target="_blank"
@@ -214,11 +222,9 @@
     <div class="container-fluid text-center">
         <img src="../images/footer_platos.webp" class="img-fluid" alt="Responsive image">
     </div>
-  
-<!-- Sweet alert -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- LUXON -->
-<!-- <script src="luxon.js"></script> -->
+
+    <!-- Sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../jss/form.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
 </body>

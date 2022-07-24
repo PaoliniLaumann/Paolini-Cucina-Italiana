@@ -61,7 +61,7 @@ fetch(
       );
 
       imprimirProductosEnHTML(arrayFiltrado);
-      
+
     }
 
     function imprimirProductosEnHTML(array) {
@@ -160,9 +160,7 @@ fetch(
         <button id="vaciarCarrito" class="btn btn-danger">Vaciar Carrito</button>
       `;
       let vaciarCarrito = document.getElementById(`vaciarCarrito`);
-      vaciarCarrito.addEventListener("click", () =>
-        eliminarCarrito()
-      );
+      vaciarCarrito.addEventListener("click", () => eliminarCarrito());
     }
 
     function eliminarDelCarrito(id, nombre_pro) {
@@ -200,8 +198,9 @@ fetch(
         return;
       }
     }
-    function eliminarItem(id) {      
-      const newcart = carrito.filter((item) => item.id != id);      
+
+    function eliminarItem(id) {
+      const newcart = carrito.filter((item) => item.id != id);
       carrito = [];
       carrito.push(...newcart);
       imprimirTabla(carrito);
@@ -222,27 +221,28 @@ fetch(
 
     let carrito;
 
-function chequearCarritoEnStorage() {
-  let contenidoEnStorage = JSON.parse(localStorage.getItem("carritoEnStorage"));
-  if (contenidoEnStorage) {
-    let array = [];
-    for (const objeto of contenidoEnStorage) {
-      let producto = new Producto(objeto, objeto.cantidad);
-      producto.actualizarPrecioTotal();
-      array.push(producto);
+    function chequearCarritoEnStorage() {
+      let contenidoEnStorage = JSON.parse(localStorage.getItem("carritoEnStorage"));
+
+      if (contenidoEnStorage) {
+        let array = [];
+        for (const objeto of contenidoEnStorage) {
+          let producto = new Producto(objeto, objeto.cantidad);
+          producto.actualizarPrecioTotal();
+          array.push(producto);
+        }
+        imprimirTabla(array);
+        return array;
+      }
+
+      return [];
     }
-    imprimirTabla(array);
-    return array;
-  }
-
-  return [];
-}
 
 
-carrito = chequearCarritoEnStorage();
-
+    carrito = chequearCarritoEnStorage();
+    
   })
-  .catch(() => {    
+  .catch(() => {
     contenedor.innerHTML = swal.fire(`No encontramos Productos`, "", "error");
     contenedor.innerHTML = "";
   });

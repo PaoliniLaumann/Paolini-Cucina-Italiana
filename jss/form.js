@@ -20,9 +20,15 @@ formulario.addEventListener("submit", (e) => {
 });
 
 const validar = (datosUsuario) => {
-  if (datosUsuario.name && datosUsuario.email && datosUsuario.fecha  !== "" ) {
+  if (
+    datosUsuario.name &&
+    datosUsuario.email &&
+    datosUsuario.fecha &&
+    datosUsuario.telefono &&
+    datosUsuario.cantidad !== ""
+  ) {
     mensajeExitoso(datosUsuario);
-    guardarStorage(datosUsuario);    
+    guardarStorage(datosUsuario);
   } else {
     mensajeError(datosUsuario);
   }
@@ -34,19 +40,30 @@ const guardarStorage = (datosUsuario) => {
 };
 
 const obtenerStorage = () => {
-  const storage = JSON.parse(localStorage.getItem("reserva")); 
+  const storage = JSON.parse(localStorage.getItem("reserva"));
 };
 
 const mensajeExitoso = (datosUsuario) => {
+  const fechaActual = new Date(datosUsuario.fecha);
+  fechaActual.setMinutes(
+    fechaActual.getMinutes() + fechaActual.getTimezoneOffset()
+  );
+  const opciones = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const fechaReserva = fechaActual.toLocaleDateString("es-ES", opciones);
   swal.fire(
-    `Hola ${datosUsuario.name},tu reserva para el dia ${datosUsuario.fecha} se realizo con exito
+    `Hola ${datosUsuario.name},tu reserva para ${datosUsuario.cantidad} personas el dia ${fechaReserva} se realizo con exito
     te llegara la confirmacion a ${datosUsuario.email}`,
     "",
     "success"
   );
-  /* document.getElementById('formulario').reset(); */
+
 };
 
-const mensajeError = (datosUsuario) => {
+const mensajeError = () => {
   swal.fire(`Hola tienes que ingresar todos los datos`, "", "error");
 };
